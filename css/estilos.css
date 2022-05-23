@@ -1,0 +1,366 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+	font-family: "open-serif";
+	src: url("open-serif.ttf");
+}
+
+html {
+    overflow-y: auto;
+}
+
+body, button {
+    font-family: "open-serif", serif;
+}
+
+body {
+    font-size: 15px;
+    color: black;
+    margin: 0px;
+    background-image: url("../imagenes/madera.jpg");
+    background-repeat: no-repeat;
+    background-color: rgb(36, 36, 36);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    user-select: none;
+}
+
+#grilla {
+    display: grid;
+    gap: 10px;
+    grid-template-rows: auto 80px auto 160px auto;
+    grid-template-columns: 52px 190px 52px;
+    justify-content: center;
+    margin-top: -10px;
+}
+
+#grilla .ancho-maximo {
+    grid-column: 1 / 4;
+}
+
+#contenedor-mesa {
+    display: grid;
+    grid-template-columns: 52px auto 52px;
+}
+
+#mesa {
+    height: 118px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#mesa .per {
+    position: relative;
+    top: -65px;
+}
+
+#mesa .per .carta, #mesa .npc .carta, #mesa .per > div, #mesa .npc > div {
+    display: inline-block;
+}
+
+#cartas-npc, #cartas-per {
+    display: flex;
+    justify-content: center;
+}
+
+#cartas-per {
+    background-image: url("../imagenes/decorador.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    height: 160px;
+}
+
+#cartas-per .carta {
+    box-shadow: 0px 0px 14px 8px black;
+    margin-top: 22px;
+}
+
+#cartas-npc .carta:nth-child(2), #cartas-per .carta:nth-child(2) {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.dorso {
+    width: 52px;
+    height: 80px;
+}
+
+#mesa .per > div, #mesa .npc > div {
+    width: 60px;
+    height: 92px;
+}
+
+.mazo {
+    position: relative;
+    height: 90px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#cartas-per .carta:nth-child(1) {
+    transform: translateX(18px);
+}
+
+#cartas-per .carta:nth-child(2) {
+    z-index: 1;
+}
+
+#cartas-per .carta:nth-child(3) {
+    transform: translateX(-18px);
+    z-index: 2;
+}
+
+#puntuacion {
+    display: grid;
+    column-gap: 8px;
+    grid-template-columns: auto auto auto 34px;
+}
+
+#contenedor-total .tablero-puntos {
+    background-color: rgba(155, 133, 12, 0.5);
+}
+
+#yo .tablero-puntos, #el .tablero-puntos {
+    background-color: rgba(102, 102, 102, 0.6);
+}
+
+.tablero-puntos {
+    border-radius: 4px;
+    color: white;
+    padding-top: 5px;
+    text-align: center;
+    height: 28px;
+    margin-top: 4px;
+}
+
+.b-menu {
+    width: 34px;
+    height: 34px;
+    background-image: url("../imagenes/menu.png");
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+button {
+    border-width: 0px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+#acciones button {
+    background-color: rgba(155, 133, 12, 0.7);
+    border-radius: 4px;
+    color: white;
+    padding: 0px 9px 0px 9px;
+    font-size: 13px;
+    margin-left: 2px;
+    margin-right: 2px;
+    height: 44px;
+}
+
+#acciones button.b-irmazo{
+    background-color: rgba(235, 66, 14, 0.7);
+}
+
+#acciones .accion:not(.visible), 
+.pantalla:not(.visible), 
+#menu button:not(.visible),
+#fondo-popups:not(.visible),
+.popup:not(.visible) {
+    display: none;
+}
+
+#acciones .accion.visible {
+    display: flex;
+    justify-content: space-around;
+}
+
+.pantalla.visible, #menu button.visible, #fondo-popups.visible, .popup.visible {
+    display: block;
+}
+
+#barra-vertical {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 220px;
+    padding-top: 10px;
+    padding-bottom: 2px;
+}
+
+#contenedor-logo, #cargando-recursos {
+    margin-top: -72px;
+}
+
+#contenedor-logo {
+    display: flex;
+    justify-content: center;
+}
+
+#cargando-recursos .cargando {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -10px;
+}
+
+#cargando-recursos .cargando .circulo {
+    width: 14px;
+    height: 14px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+#menu button {
+    background-color: rgba(255, 240, 0, 0.4);
+    background-image: url("../imagenes/decorador-boton.png");
+    color: white;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 200px;
+    height: 50px;
+}
+
+.carta {
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+#mesa .carta {
+    position: absolute;
+    animation-name: transicion-carta;
+    animation-duration: 200ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes transicion-carta {
+    from { 
+        opacity: 0;
+        transform: scale(1.1) translate(0px, 0px);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(0.8) translate(-7px, -11px);
+    }
+}
+
+.cargando .circulo {
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+    animation-name: transicion-cargando;
+    animation-duration: 1500ms;
+    animation-iteration-count: infinite;
+    margin-top: 12px;
+}
+
+.cargando .circulo:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+.cargando .circulo:nth-child(2) {
+    animation-delay: 500ms;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.cargando .circulo:nth-child(3) {
+    animation-delay: 1000ms;
+}
+
+@keyframes transicion-cargando {
+    0% { 
+        opacity: 0;
+        transform: scale(1, 1); 
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.5, 1.5); 
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1, 1); 
+    }
+}
+
+#fondo-popups, #fondo-oscuro {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+#fondo-popups {
+    z-index: 3;
+}
+
+#fondo-oscuro {
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0px;
+    z-index: -1;
+}
+
+.popup {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 230px;
+    padding: 30px 15px 30px 15px;
+    margin: 120px auto 0px auto;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0px 0px 18px 12px rgba(0, 0, 0, 0.6);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#popup-puntos .contenido-popup button, #popup-fin .contenido-popup button {
+    display: block;
+    padding: 10px 20px 10px 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    margin: 15px auto 0px auto;
+    border-radius: 4px;
+}
+
+#popup-puntos .contenido-popup p, #popup-fin .contenido-popup p {
+    margin-block-start: 0px;
+    margin-block-end: 10px;
+}
+
+.ganador, .perdedor {
+    font-weight: bold;
+}
+
+.ganador {
+    color: blue;
+}
+
+.perdedor {
+    color: red;
+}
+
+#contenedor-general {
+    width: 358px;
+    height: 530px;
+    position: relative;
+    margin: auto;
+}
+
+.centrado {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

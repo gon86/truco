@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/principal.js" type="module"></script>
+    <title>Truco</title>
+</head>
+<body>
+    <div id="contenedor-general">
+        <div id="cargando-recursos" class="centrado" style="display: none;">
+            <img src="imagenes/logo.png">
+            <div class="cargando">
+                <div class="circulo"></div>
+                <div class="circulo"></div>
+                <div class="circulo"></div>
+            </div>
+        </div>
+
+        <div id="fondo-popups">
+            <div id="popup-repartiendo" class="popup">
+                <div class="contenido-popup">
+                    <span></span>
+                    <div class="cargando">
+                        <div class="circulo"></div>
+                        <div class="circulo"></div>
+                        <div class="circulo"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup-respuesta" class="popup">
+                <div class="contenido-popup">
+                    <span></span>
+                </div>
+            </div>
+
+            <div id="popup-puntos" class="popup">
+                <div class="contenido-popup">
+                    <span></span>
+                    <button>Cerrar</button>
+                </div>
+            </div>
+
+            <div id="popup-fin" class="popup">
+                <div class="contenido-popup">
+                    <span></span>
+                    <button>Cerrar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="menu" class="pantalla centrado">
+            <div id="contenedor-logo"><img src="imagenes/logo.png"></div>
+            <div id="barra-vertical">
+                <button id="b-continuar">Continuar</button>
+                <button id="b-a15" class="visible">Jugar a 15</button>
+                <button id="b-a30" class="visible">Jugar a 30</button>
+                <button id="b-sonido" class="visible">Desactivar sonido</button>
+            </div>
+        </div>
+
+        <div id="juego" class="pantalla centrado">
+            <div id="grilla">
+                <div id="puntuacion" class="ancho-maximo">
+                    <div id="yo">
+                        <div class="tablero-puntos">
+                            Yo: <span>0</span>
+                        </div>
+                    </div>
+                    <div id="el">
+                        <div class="tablero-puntos">
+                            Él: <span>0</span>
+                        </div>
+                    </div>
+                    <div id="contenedor-total">
+                        <div class="tablero-puntos">
+                            A <span id="total"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="b-menu"></button>
+                    </div>
+                </div>
+                <div id="cartas-npc" class="ancho-maximo"></div>
+                <div id="contenedor-mesa" class="ancho-maximo">
+                    <div class="contenedor-mazo"></div>
+                    <div id="mesa">
+                        <div class="npc">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="per">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="contenedor-mazo"></div>
+                </div>
+                <div id="cartas-per" class="ancho-maximo"></div>
+                <div id="acciones" class="ancho-maximo">
+                    <div id="cantar-envido" class="accion visible">
+                        <button class="b-envido">Envido</button>
+                        <button class="b-real">Real envido</button>
+                        <button class="b-falta">Falta envido</button>
+                        <button class="b-truco">Truco</button>
+                        <button class="b-irmazo">Mazo</button>
+                    </div>
+                    <div id="contestar-envido" class="accion">
+                        <button class="b-quiero">Quiero</button>
+                        <button class="b-noquiero">No quiero</button>
+                        <button class="b-envido">Envido</button>
+                        <button class="b-real">Real envido</button>
+                        <button class="b-falta">Falta envido</button>
+                    </div>
+                    <div id="cantar-truco" class="accion">
+                        <button class="b-truco">Truco</button>
+                        <button class="b-retruco">Retruco</button>
+                        <button class="b-valecuatro">Vale cuatro</button>
+                        <button class="b-irmazo">Mazo</button>
+                    </div>
+                    <div id="contestar-truco" class="accion">
+                        <button class="b-quiero-truco">Quiero</button>
+                        <button class="b-noquiero-truco">No quiero</button>
+                        <button class="b-truco">Truco</button>
+                        <button class="b-retruco">Retruco</button>
+                        <button class="b-valecuatro">Vale cuatro</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fondo-oscuro" style="display: none;"></div>
+</body>
+</html>
